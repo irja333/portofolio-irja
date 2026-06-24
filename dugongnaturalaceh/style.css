@@ -1,0 +1,245 @@
+:root {
+    /* Dark Mode (default) CSS variables */
+    --deep-sea: #020d14;
+    --dark-cyan: #062c3d;
+    --mid-cyan: #0a5270;
+    --neon-cyan: #00f0ff;
+    --neon-green: #00ff9d;
+    --text-muted: #8ab4f8;
+    
+    --text-white: #ffffff;
+    --text-gray-200: #e5e7eb;
+    --text-gray-300: #d1d5db;
+    --text-gray-400: #9ca3af;
+    --text-gray-500: #6b7280;
+
+    --glass-bg: rgba(6, 44, 61, 0.4);
+    --glass-border: rgba(0, 240, 255, 0.1);
+    --hero-glow-bg: radial-gradient(circle at 50% 30%, #062c3d 0%, #020d14 70%);
+    --footer-bg: #01080d;
+}
+
+body.light-mode {
+    /* Light Mode CSS variables (Softer grey-blue palette, less glaring/bright) */
+    --deep-sea: #cbd5e1;          /* Softer, darker light slate background */
+    --dark-cyan: #b4c3d2;         /* Softer, darker contrast background for sections */
+    --mid-cyan: #9eb1c4;          /* Softer card background / border */
+    --neon-cyan: #0b7a99;         /* Slightly deeper cyan for perfect readability on slate background */
+    --neon-green: #116b32;        /* Slightly deeper green for contrast */
+    --text-muted: #3b4859;        /* Soft dark gray-blue for descriptions */
+    
+    --text-white: #0f172a;        /* Slate-900 */
+    --text-gray-200: #1e293b;     /* Slate-800 */
+    --text-gray-300: #293548;     /* Slate-750 */
+    --text-gray-400: #3b4859;     /* Slate-700 */
+    --text-gray-500: #506176;     /* Slate-600 */
+
+    --glass-bg: rgba(255, 255, 255, 0.55);
+    --glass-border: rgba(11, 122, 153, 0.2);
+    --hero-glow-bg: radial-gradient(circle at 50% 30%, #9eb1c4 0%, #cbd5e1 70%);
+    --footer-bg: #9eb1c4;         /* Matches light mode mid-cyan for footer contrast */
+}
+
+body {
+    background-color: var(--deep-sea);
+    color: var(--text-gray-200);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glowing background effect for Hero */
+.hero-glow {
+    background: var(--hero-glow-bg);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
+}
+
+/* Subtle floating animation for elements */
+.float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Glassmorphism utility for dark theme */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+/* Fade in animations */
+.fade-in {
+    animation: fadeIn 1s ease-in forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stagger-1 {
+    animation-delay: 0.2s;
+}
+
+.stagger-2 {
+    animation-delay: 0.4s;
+}
+
+.stagger-3 {
+    animation-delay: 0.6s;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--deep-sea);
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--mid-cyan);
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-cyan);
+}
+
+/* Subtle background texture/pattern */
+.bg-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300f0ff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* --- Form Fields Contrast / Visibility Styles --- */
+#reportForm input, 
+#reportForm select, 
+#reportForm textarea {
+    background-color: rgba(2, 13, 20, 0.7) !important;
+    color: #ffffff !important;
+    border-color: rgba(0, 240, 255, 0.3) !important;
+}
+
+#reportForm select option {
+    background-color: #020d14 !important;
+    color: #ffffff !important;
+}
+
+/* Light Mode Overrides for Form Fields */
+body.light-mode #reportForm input, 
+body.light-mode #reportForm select, 
+body.light-mode #reportForm textarea {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    color: #0f172a !important;
+    border-color: rgba(11, 122, 153, 0.3) !important;
+}
+
+body.light-mode #reportForm select option {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+}
+
+/* --- Performance Rendering Optimizations --- */
+#tentang, #edukasi, #program, #instagram-feed, #lapor, #kontak {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 700px;
+}
+
+/* --- Hero Background Image & Overlay Customizations --- */
+.hero-bg-image {
+    opacity: 0.38;
+    mix-blend-mode: luminosity;
+    filter: brightness(0.85) contrast(1.15);
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.hero-bg-overlay {
+    background: linear-gradient(to bottom, rgba(2, 13, 20, 0.05) 0%, rgba(2, 13, 20, 0.45) 50%, var(--deep-sea) 100%);
+    transition: background 0.3s ease;
+}
+
+body.light-mode .hero-bg-image {
+    opacity: 0.28;
+    mix-blend-mode: normal;
+    filter: brightness(1.15) contrast(0.9) saturate(0.9);
+}
+
+body.light-mode .hero-bg-overlay {
+    background: linear-gradient(to bottom, rgba(244, 246, 248, 0.1) 0%, rgba(244, 246, 248, 0.5) 50%, var(--deep-sea) 100%);
+}
+
+body.light-mode .bubble {
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(8, 145, 178, 0.08) 40%, rgba(8, 145, 178, 0.2) 80%, rgba(255, 255, 255, 0.7));
+    box-shadow: 0 4px 10px rgba(8, 145, 178, 0.15), inset 0 0 6px rgba(255, 255, 255, 0.7);
+    border: 0.5px solid rgba(8, 145, 178, 0.15);
+}
+
+/* --- Animated Bubbles --- */
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.35), rgba(0, 240, 255, 0.08) 40%, rgba(0, 240, 255, 0.25) 80%, rgba(255, 255, 255, 0.5));
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 240, 255, 0.12), inset 0 0 6px rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    animation: bubble-rise 12s infinite linear;
+    z-index: 1;
+}
+
+@keyframes bubble-rise {
+    0% {
+        bottom: -50px;
+        transform: translateX(0) scale(0.8);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.5;
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        bottom: 110%;
+        transform: translateX(80px) scale(1.1);
+        opacity: 0;
+    }
+}
+
+/* Bubble Specific Delay & Positions */
+.bubble-1 { width: 30px; height: 30px; left: 8%; animation-duration: 14s; animation-delay: 0s; }
+.bubble-2 { width: 16px; height: 16px; left: 24%; animation-duration: 9s; animation-delay: 2s; }
+.bubble-3 { width: 22px; height: 22px; left: 38%; animation-duration: 12s; animation-delay: 4s; }
+.bubble-4 { width: 42px; height: 42px; left: 52%; animation-duration: 16s; animation-delay: 1s; }
+.bubble-5 { width: 14px; height: 14px; left: 68%; animation-duration: 8s; animation-delay: 5s; }
+.bubble-6 { width: 28px; height: 28px; left: 82%; animation-duration: 13s; animation-delay: 3s; }
+.bubble-7 { width: 20px; height: 20px; left: 30%; animation-duration: 11s; animation-delay: 7s; }
+.bubble-8 { width: 36px; height: 36px; left: 76%; animation-duration: 15s; animation-delay: 6s; }
+
+
+

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio Irja Zahidi - Web Developer & IT Education Graduate dari Banda Aceh. Lihat pengalaman, kemampuan, dan proyek saya.">
+    <meta name="keywords" content="Irja Zahidi, Portfolio, Web Developer, Banda Aceh, IT Education">
+    <meta name="author" content="Irja Zahidi">
+    <title>Irja Zahidi | Portfolio</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>IZ<span class="logo-bracket">/&gt;</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link active" data-section="hero"><span
+                            class="lang-id">Beranda</span><span class="lang-en">Home</span></a></li>
+                <li><a href="#about" class="nav-link" data-section="about"><span class="lang-id">Tentang</span><span
+                            class="lang-en">About</span></a></li>
+                <li><a href="#experience" class="nav-link" data-section="experience"><span
+                            class="lang-id">Pengalaman</span><span class="lang-en">Experience</span></a></li>
+                <li><a href="#education" class="nav-link" data-section="education"><span
+                            class="lang-id">Pendidikan</span><span class="lang-en">Education</span></a></li>
+                <li><a href="#skills" class="nav-link" data-section="skills"><span class="lang-id">Kemampuan</span><span
+                            class="lang-en">Skills</span></a></li>
+                <li><a href="#projects" class="nav-link" data-section="projects"><span
+                            class="lang-id">Proyek</span><span class="lang-en">Projects</span></a></li>
+                <li><a href="#certificates" class="nav-link" data-section="certificates"><span
+                            class="lang-id">Sertifikat</span><span class="lang-en">Certificates</span></a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact"><span class="lang-id">Kontak</span><span
+                            class="lang-en">Contact</span></a></li>
+            </ul>
+            <button class="lang-toggle" id="langToggle" aria-label="Ubah Bahasa">
+                <span>ID</span>
+            </button>
+            <button class="theme-toggle" id="themeToggle" aria-label="Ubah Tema">
+                <i class="fas fa-sun"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="hero-greeting">
+                    <span class="wave-emoji">👋</span> <span class="lang-id">Halo, saya</span><span
+                        class="lang-en">Hello, I am</span>
+                </p>
+                <h1 class="hero-name">
+                    <span class="name-first">IRJA ZAHIDI</span>
+                </h1>
+                <div class="hero-typing-wrapper">
+                    <span class="typing-prefix"><span class="lang-id">Saya seorang </span><span class="lang-en">I am a
+                        </span></span>
+                    <span class="typing-text" id="typingText"></span>
+                    <span class="typing-cursor">|</span>
+                </div>
+                <p class="hero-description">
+                    <span class="lang-id">Fresh Graduate Pendidikan Teknologi Informasi yang bersemangat dalam
+                        pengembangan web & teknologi</span>
+                    <span class="lang-en">Fresh Graduate of Informatics Technology Education passionate about web
+                        development & technology</span>
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> <span class="lang-id">Hubungi Saya</span><span
+                            class="lang-en">Contact Me</span>
+                    </a>
+                    <a href="assets/CV-IRJA_ZAHIDI.pdf" download class="btn btn-outline">
+                        <i class="fas fa-download"></i> <span class="lang-id">Unduh CV</span><span
+                            class="lang-en">Download CV</span>
+                    </a>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://www.linkedin.com/in/irja-zahidi" target="_blank" rel="noopener" class="social-link"
+                        aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/irja.zahidi" target="_blank" rel="noopener" class="social-link"
+                        aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:irjazahidi8@gmail.com" class="social-link" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:+6282275576880" class="social-link" aria-label="Phone">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="avatar-ring">
+                    <div class="avatar-glow"></div>
+                    <div class="avatar-container">
+                        <img src="assets/Profil.jpeg" alt="Foto Profil Irja Zahidi" class="avatar-img">
+                    </div>
+                    <div class="orbit-badges">
+                        <div class="orbit-badge badge-1" title="Web Development">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="orbit-badge badge-2" title="Data Science">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="orbit-badge badge-3" title="AI">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="orbit-badge badge-4" title="Design">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span><span class="lang-id">Gulir ke Bawah</span><span class="lang-en">Scroll Down</span></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag"><i class="fas fa-user"></i> <span class="lang-id">Tentang Saya</span><span
+                        class="lang-en">About Me</span></span>
+                <h2 class="section-title"><span class="lang-id">Mengenal Lebih Dekat</span><span class="lang-en">Get to
+                        Know Me</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid" data-animate>
+                <div class="about-text">
+                    <p class="about-description">
+                        <span class="lang-id">Saya merupakan lulusan baru dari Program Studi <strong>Pendidikan
+                                Teknologi Informasi</strong> yang bersemangat dan berdedikasi tinggi dalam bidang
+                            teknologi dan pengembangan web. Selama masa studi, saya aktif terlibat dalam berbagai proyek
+                            pengembangan web serta menguasai dasar-dasar pemrograman web.</span>
+                        <span class="lang-en">I am a fresh graduate of <strong>Informatics Technology Education</strong>
+                            who is highly passionate and dedicated to technology and web development. During my studies,
+                            I was actively involved in various web development projects and mastered the fundamentals of
+                            web programming.</span>
+                    </p>
+                    <p class="about-description">
+                        <span class="lang-id">Selain itu, saya mahir menggunakan <strong>Microsoft Office</strong> untuk
+                            keperluan administrasi dan pengolahan data, maupun media digital. Saya memiliki kemampuan
+                            untuk bekerja secara mandiri maupun dalam tim, serta berkomitmen untuk terus belajar dan
+                            beradaptasi dengan perkembangan teknologi.</span>
+                        <span class="lang-en">Additionally, I am proficient in using <strong>Microsoft Office</strong>
+                            for administrative, data processing, and digital media needs. I have the ability to work
+                            independently or in a team, and am committed to continuous learning and adapting to
+                            technological advancements.</span>
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" data-count="4">0</div>
+                            <div class="stat-label"><span class="lang-id">Pengalaman Kerja</span><span
+                                    class="lang-en">Work Experience</span></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-count="6">0</div>
+                            <div class="stat-label"><span class="lang-id">Sertifikat</span><span
+                                    class="lang-en">Certificates</span></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-count="3.57" data-decimal="true">0</div>
+                            <div class="stat-label"><span class="lang-id">IPK</span><span class="lang-en">GPA</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-count="12">0</div>
+                            <div class="stat-label"><span class="lang-id">Kemampuan</span><span
+                                    class="lang-en">Skills</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-info-cards">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-content">
+                            <span class="info-label"><span class="lang-id">Lokasi</span><span
+                                    class="lang-en">Location</span></span>
+                            <span class="info-value">Banda Aceh, NAD</span>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="info-content">
+                            <span class="info-label"><span class="lang-id">Pendidikan</span><span
+                                    class="lang-en">Education</span></span>
+                            <span class="info-value"><span class="lang-id">S1 Pend. Teknologi Informasi</span><span
+                                    class="lang-en">Bachelor of Informatics Education</span></span>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-university"></i></div>
+                        <div class="info-content">
+                            <span class="info-label"><span class="lang-id">Universitas</span><span
+                                    class="lang-en">University</span></span>
+                            <span class="info-value">UIN Ar-Raniry Banda Aceh <span class="badge-cumlaude">Cum
+                                    Laude</span></span>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-briefcase"></i></div>
+                        <div class="info-content">
+                            <span class="info-label">Status</span>
+                            <span class="info-value">Fresh Graduate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section experience" id="experience">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag"><i class="fas fa-briefcase"></i> <span class="lang-id">Pengalaman
+                        Kerja</span><span class="lang-en">Work Experience</span></span>
+                <h2 class="section-title"><span class="lang-id">Perjalanan Karir Saya</span><span class="lang-en">My
+                        Career Journey</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline" data-animate>
+                <div class="timeline-item" data-animate>
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i> <span class="lang-id">Feb 2026 - Jun 2026</span><span
+                                class="lang-en">Feb 2026 - Jun 2026</span>
+                        </div>
+                        <h3 class="timeline-title">Data Entry</h3>
+                        <h4 class="timeline-company">
+                            <i class="fas fa-building"></i> LP3H YSPDI Robbani
+                        </h4>
+                        <p class="timeline-desc">
+                            <span class="lang-id">Bertugas menginput data untuk membantu pelaku usaha mendapatkan
+                                sertifikat halal.</span>
+                            <span class="lang-en">Responsible for inputting data to assist business owners in obtaining
+                                halal certificates.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-animate>
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i> <span class="lang-id">Jan 2025 - Mar 2025</span><span
+                                class="lang-en">Jan 2025 - Mar 2025</span>
+                        </div>
+                        <h3 class="timeline-title"><span class="lang-id">Guru Informatika</span><span
+                                class="lang-en">Informatics Teacher</span></h3>
+                        <h4 class="timeline-company">
+                            <i class="fas fa-school"></i> SMP Negeri 8 Banda Aceh
+                        </h4>
+                        <p class="timeline-desc">
+                            <span class="lang-id">Menyusun perangkat pembelajaran dan mengajarkan materi pelajaran
+                                Informatika.</span>
+                            <span class="lang-en">Developed lesson plans and taught Informatics subject matter.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-animate>
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i> <span class="lang-id">Jun 2024 - Agu 2024</span><span
+                                class="lang-en">Jun 2024 - Aug 2024</span>
+                        </div>
+                        <h3 class="timeline-title"><span class="lang-id">Tentor Les Private</span><span
+                                class="lang-en">Private Tutor</span></h3>
+                        <h4 class="timeline-company">
+                            <i class="fas fa-chalkboard-teacher"></i> Les Private BNA
+                        </h4>
+                        <p class="timeline-desc">
+                            <span class="lang-id">Mengajar sebagai Guru les private yang datang langsung ke rumah
+                                siswa.</span>
+                            <span class="lang-en">Taught as a private tutor, conducting home-visit sessions for
+                                students.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-animate>
+                    <div class="timeline-marker">
+                        <div class="marker-dot"></div>
+                    </div>
+                    <div class="timeline-card">
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i> <span class="lang-id">Feb 2024 - Apr 2024</span><span
+                                class="lang-en">Feb 2024 - Apr 2024</span>
+                        </div>
+                        <h3 class="timeline-title"><span class="lang-id">Administrasi</span><span
+                                class="lang-en">Administration</span></h3>
+                        <h4 class="timeline-company">
+                            <i class="fas fa-landmark"></i> Balai Prasarana Permukiman Wilayah Aceh
+                        </h4>
+                        <ul class="timeline-list">
+                            <li class="lang-id">Bertugas di bagian sanitasi, mengolah data</li>
+                            <li class="lang-id">Merapikan serta mengarsipkan berkas-berkas</li>
+                            <li class="lang-en">Assigned to the sanitation division, processed data</li>
+                            <li class="lang-en">Organized and archived physical and digital files</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section education" id="education">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag"><i class="fas fa-graduation-cap"></i> <span
+                        class="lang-id">Pendidikan</span><span class="lang-en">Education</span></span>
+                <h2 class="section-title"><span class="lang-id">Latar Belakang Pendidikan</span><span
+                        class="lang-en">Educational Background</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="education-card-wrapper" data-animate>
+                <div class="edu-card-main">
+                    <div class="edu-card-badge">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="edu-card-content">
+                        <h3 class="edu-university">Universitas Islam Negeri Ar-Raniry Banda Aceh</h3>
+                        <p class="edu-program">
+                            <span class="lang-id">Pendidikan Teknologi Informasi <span class="badge-cumlaude">Cum
+                                    Laude</span></span>
+                            <span class="lang-en">Informatics Technology Education <span class="badge-cumlaude">Cum
+                                    Laude</span></span>
+                        </p>
+                        <p class="edu-period"><i class="fas fa-calendar-alt"></i> <span class="lang-id">Agustus 2021 -
+                                Agustus 2025</span><span class="lang-en">August 2021 - August 2025</span></p>
+                        <div class="edu-highlights">
+                            <div class="edu-highlight">
+                                <div class="highlight-icon"><i class="fas fa-award"></i></div>
+                                <div>
+                                    <span class="highlight-label"><span class="lang-id">IPK</span><span
+                                            class="lang-en">GPA</span></span>
+                                    <span class="highlight-value">3.57</span>
+                                </div>
+                            </div>
+                            <div class="edu-highlight highlight-cumlaude">
+                                <div class="highlight-icon"><i class="fas fa-medal"></i></div>
+                                <div>
+                                    <span class="highlight-label"><span class="lang-id">Predikat</span><span
+                                            class="lang-en">Distinction</span></span>
+                                    <span class="highlight-value">Cum Laude</span>
+                                </div>
+                            </div>
+                            <a href="https://ojs.trigunadharma.ac.id/index.php/jsi/article/view/11696" target="_blank"
+                                rel="noopener" class="edu-highlight journal-link">
+                                <div class="highlight-icon"><i class="fas fa-book"></i></div>
+                                <div>
+                                    <span class="highlight-label"><span class="lang-id">Jurnal</span><span
+                                            class="lang-en">Journal</span> <i class="fas fa-external-link-alt"
+                                            style="font-size: 0.7rem; margin-left: 4px;"></i></span>
+                                    <span class="highlight-value">
+                                        <span class="lang-id">Perancangan Aplikasi E-Katalog Genta Fiberglass Di Aceh
+                                            Selatan Berbasis Web</span>
+                                        <span class="lang-en">Web-Based E-Catalog Application Design for Genta
+                                            Fiberglass in South Aceh</span>
+                                    </span>
+                                </div>
+                            </a>
+                            <a href="https://doi.org/10.56995/sintek.v5i1.89" target="_blank"
+                                rel="noopener" class="edu-highlight journal-link">
+                                <div class="highlight-icon"><i class="fas fa-book"></i></div>
+                                <div>
+                                    <span class="highlight-label"><span class="lang-id">Jurnal</span><span
+                                            class="lang-en">Journal</span> <i class="fas fa-external-link-alt"
+                                            style="font-size: 0.7rem; margin-left: 4px;"></i></span>
+                                    <span class="highlight-value">
+                                        <span class="lang-id">Sistem Pengambilan Keputusan Dalam Pemilihan Kos-Kosan Putri Dengan Metode Technique For Order Of Preference By Similarity To Ideal Solution (TOPSIS) Di Wilayah Kampus UIN Ar-Raniry Banda Aceh</span>
+                                        <span class="lang-en">Decision Support System in Choosing Female Boarding Houses Using the Technique for Order of Preference by Similarity to Ideal Solution (TOPSIS) Method around UIN Ar-Raniry Banda Aceh Campus Area</span>
+                                    </span>
+                                </div>
+                            </a>
+                            <div class="edu-highlight">
+                                <div class="highlight-icon"><i class="fas fa-hands-helping"></i></div>
+                                <div>
+                                    <span class="highlight-label">
+                                        <span class="lang-id">Organisasi & Relawan</span>
+                                        <span class="lang-en">Organizations & Volunteering</span>
+                                    </span>
+                                    <span class="highlight-value">
+                                        <strong><span class="lang-id">Anggota Humas</span><span class="lang-en">Public Relations Member</span></strong> - 
+                                        <span class="lang-id">Himpunan Pendidikan Teknologi Informasi (Mar 2023 - Mar 2025)</span><span class="lang-en">Informatics Technology Education Association (Mar 2023 - Mar 2025)</span>
+                                        <br>
+                                        <span class="lang-id">• Membantu masyarakat, menggalang dana bencana alam, dan bergotong royong.</span>
+                                        <span class="lang-en">• Assisting the community, fundraising for natural disaster relief, and participating in mutual cooperation.</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Education Grid -->
+                    <div class="edu-grid-secondary">
+                        <!-- High School -->
+                        <div class="edu-card-sub">
+                            <div class="edu-card-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="edu-card-sub-content">
+                                <h3 class="edu-school-name">MAN 2 Aceh Selatan</h3>
+                                <p class="edu-level"><span class="lang-id">Sekolah Menengah Atas (SMA)</span><span
+                                        class="lang-en">Senior High School</span></p>
+                                <p class="edu-period"><i class="fas fa-calendar-alt"></i> 2018 - 2021</p>
+                            </div>
+                        </div>
+                        <!-- Junior High School -->
+                        <div class="edu-card-sub">
+                            <div class="edu-card-icon"><i class="fas fa-school"></i></div>
+                            <div class="edu-card-sub-content">
+                                <h3 class="edu-school-name">MTsN 2 Aceh Selatan</h3>
+                                <p class="edu-level"><span class="lang-id">Sekolah Menengah Pertama (SMP)</span><span
+                                        class="lang-en">Junior High School</span></p>
+                                <p class="edu-period"><i class="fas fa-calendar-alt"></i> 2015 - 2018</p>
+                            </div>
+                        </div>
+                        <!-- Elementary School -->
+                        <div class="edu-card-sub">
+                            <div class="edu-card-icon"><i class="fas fa-child"></i></div>
+                            <div class="edu-card-sub-content">
+                                <h3 class="edu-school-name">MIN 16 Aceh Selatan</h3>
+                                <p class="edu-level"><span class="lang-id">Sekolah Dasar (SD)</span><span
+                                        class="lang-en">Elementary School</span></p>
+                                <p class="edu-period"><i class="fas fa-calendar-alt"></i> 2009 - 2015</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag"><i class="fas fa-cogs"></i> <span class="lang-id">Kemampuan</span><span
+                        class="lang-en">Skills</span></span>
+                <h2 class="section-title"><span class="lang-id">Keahlian & Kompetensi</span><span class="lang-en">Skills
+                        & Competencies</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-grid" data-animate>
+                <div class="skill-card" data-skill="90">
+                    <div class="skill-icon"><i class="fas fa-keyboard"></i></div>
+                    <h3>Data Entry</h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="90"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="85">
+                    <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3>Creative Design</h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="85"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="80">
+                    <div class="skill-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3>Data Analysis</h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="80"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="88">
+                    <div class="skill-icon"><i class="fas fa-code"></i></div>
+                    <h3>Web Development</h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="88"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="75">
+                    <div class="skill-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Artificial Intelligence</h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="75"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="92">
+                    <div class="skill-icon"><i class="fas fa-users"></i></div>
+                    <h3>Teamwork</h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="92"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="95">
+                    <div class="skill-icon"><i class="fas fa-file-excel"></i></div>
+                    <h3>Microsoft Office</h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="95"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="88">
+                    <div class="skill-icon"><i class="fas fa-desktop"></i></div>
+                    <h3>Computer Operator</h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="88"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="82">
+                    <div class="skill-icon"><i class="fas fa-database"></i></div>
+                    <h3>Data Management</h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="82"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="87">
+                    <div class="skill-icon"><i class="fas fa-file-alt"></i></div>
+                    <h3>Administration</h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="87"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="85">
+                    <div class="skill-icon"><i class="fas fa-hashtag"></i></div>
+                    <h3><span class="lang-id">Sosial Media</span><span class="lang-en">Social Media</span></h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="85"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="90">
+                    <div class="skill-icon"><i class="fab fa-google"></i></div>
+                    <h3>Google Workspace</h3>
+                    <div class="skill-bar">
+                        <div class="skill-fill" data-width="90"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag"><i class="fas fa-laptop-code"></i> <span class="lang-id">Proyek</span><span
+                        class="lang-en">Projects</span></span>
+                <h2 class="section-title"><span class="lang-id">Proyek Saya</span><span class="lang-en">My
+                        Projects</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-grid" data-animate>
+                <div class="project-card">
+                    <div class="project-icon-wrapper">
+                        <i class="fas fa-hourglass-half"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Age Tracker</h3>
+                        <p class="project-desc">
+                            <span class="lang-id">Aplikasi interaktif berbasis web untuk melacak dan menghitung umur
+                                secara detail (tahun, bulan, hari, jam, menit, detik) dengan antarmuka futuristik
+                                berbasis glassmorphism.</span>
+                            <span class="lang-en">An interactive web-based application to track and calculate age in
+                                detail (years, months, days, hours, minutes, seconds) featuring a futuristic
+                                glassmorphic user interface.</span>
+                        </p>
+                        <div class="project-tech-tags">
+                            <span class="tech-tag">TailwindCSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML5</span>
+                        </div>
+                        <a href="cek-umur/index.html" class="btn btn-outline project-link">
+                            <span class="lang-id">Buka Aplikasi</span><span class="lang-en">Open Application</span> <i
+                                class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon-wrapper">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Dugong Natural Aceh Corp</h3>
+                        <p class="project-desc">
+                            <span class="lang-id">Website konservasi dugong dan padang lamun di perairan Aceh.
+                                Dilengkapi fitur pelaporan penampakan dugong dengan verifikasi kamera & GPS real-time,
+                                galeri Instagram, serta edukasi ekosistem laut.</span>
+                            <span class="lang-en">A dugong and seagrass conservation website in Aceh waters. Features
+                                include dugong sighting reports with real-time camera & GPS verification, an Instagram
+                                gallery, and marine ecosystem education.</span>
+                        </p>
+                        <div class="project-tech-tags">
+                            <span class="tech-tag">TailwindCSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Google Apps Script</span>
+                            <span class="tech-tag">GPS API</span>
+                        </div>
+                        <a href="dugongnaturalaceh/index.html" class="btn btn-outline project-link">
+                            <span class="lang-id">Buka Aplikasi</span><span class="lang-en">Open Application</span> <i
+                                class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon-wrapper">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Kimi Parfume Catalog</h3>
+                        <p class="project-desc">
+                            <span class="lang-id">Website landing page & katalog e-commerce interaktif untuk produk
+                                parfum eksklusif PT Kimi Scent House. Dilengkapi sistem keranjang belanja (cart) eceran
+                                & reseller berbasis cookies, filter kategori, serta integrasi WhatsApp checkout.</span>
+                            <span class="lang-en">An landing page & interactive e-commerce catalog for exclusive perfume
+                                products from PT Kimi Scent House. Equipped with retail & reseller shopping cart systems
+                                based on cookies, category filters, and WhatsApp checkout integration.</span>
+                        </p>
+                        <div class="project-tech-tags">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">Vanilla CSS</span>
+                            <span class="tech-tag">JavaScript (ES6)</span>
+                            <span class="tech-tag">Cookies API</span>
+                        </div>
+                        <a href="kimi-parfum/index.html" class="btn btn-outline project-link">
+                            <span class="lang-id">Buka Aplikasi</span><span class="lang-en">Open Application</span> <i
+                                class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="section certificates" id="certificates">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag"><i class="fas fa-certificate"></i> <span
+                        class="lang-id">Sertifikat</span><span class="lang-en">Certificates</span></span>
+                <h2 class="section-title"><span class="lang-id">Sertifikasi & Pelatihan</span><span
+                        class="lang-en">Certifications & Trainings</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="cert-grid" data-animate>
+                <div class="cert-card" data-index="0">
+                    <div class="cert-img-container">
+                        <img src="Sertifikat/junior-web-development.jpeg" alt="Web Development Junior" class="cert-img"
+                            loading="lazy">
+                        <div class="cert-img-overlay">
+                            <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> <span
+                                    class="lang-id">Perbesar</span><span class="lang-en">Zoom</span></span>
+                        </div>
+                    </div>
+                    <div class="cert-body">
+                        <h3 class="cert-title">Web Development Junior</h3>
+                        <p class="cert-issuer"><i class="fas fa-building"></i> LSP Teknologi Digital</p>
+                        <p class="cert-date"><i class="fas fa-calendar-alt"></i> <span class="lang-id">September
+                                2025</span><span class="lang-en">September 2025</span></p>
+                        <p class="cert-desc">
+                            <span class="lang-id">Sertifikasi kompetensi resmi untuk merancang, menulis kode, menguji,
+                                dan mengembangkan aplikasi berbasis web dengan standar industri.</span>
+                            <span class="lang-en">Official competency certification to design, write code, test, and
+                                develop web-based applications with industry standards.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="cert-card" data-index="1">
+                    <div class="cert-img-container">
+                        <img src="Sertifikat/basic-data-science.jpg" alt="Basic Data Science" class="cert-img"
+                            loading="lazy">
+                        <div class="cert-img-overlay">
+                            <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> <span
+                                    class="lang-id">Perbesar</span><span class="lang-en">Zoom</span></span>
+                        </div>
+                    </div>
+                    <div class="cert-body">
+                        <h3 class="cert-title">Basic Data Science</h3>
+                        <p class="cert-issuer"><i class="fas fa-building"></i> BPVP Banda Aceh</p>
+                        <p class="cert-date"><i class="fas fa-calendar-alt"></i> <span class="lang-id">Februari
+                                2026</span><span class="lang-en">February 2026</span></p>
+                        <p class="cert-desc">
+                            <span class="lang-id">Pelatihan komprehensif mengolah data menggunakan Google Colab, dasar
+                                Python, visualisasi data, dan pemodelan statistik.</span>
+                            <span class="lang-en">Comprehensive training in data processing using Google Colab, Python
+                                basics, data visualization, and statistical modeling.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="cert-card" data-index="2">
+                    <div class="cert-img-container">
+                        <img src="Sertifikat/fundamental-data-analyst-power-bi.jpg"
+                            alt="Fundamental Data Analyst menggunakan Power BI" class="cert-img" loading="lazy">
+                        <div class="cert-img-overlay">
+                            <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> <span
+                                    class="lang-id">Perbesar</span><span class="lang-en">Zoom</span></span>
+                        </div>
+                    </div>
+                    <div class="cert-body">
+                        <h3 class="cert-title"><span class="lang-id">Fundamental Data Analyst menggunakan Power
+                                BI</span><span class="lang-en">Fundamental Data Analyst using Power BI</span></h3>
+                        <p class="cert-issuer"><i class="fas fa-building"></i> BPVP Banda Aceh</p>
+                        <p class="cert-date"><i class="fas fa-calendar-alt"></i> <span class="lang-id">Maret
+                                2026</span><span class="lang-en">March 2026</span></p>
+                        <p class="cert-desc">
+                            <span class="lang-id">Mempelajari dasar-dasar visualisasi data, ETL (Extract, Transform,
+                                Load) data, pemodelan data, dan perancangan dashboard interaktif menggunakan Power
+                                BI.</span>
+                            <span class="lang-en">Covers the fundamentals of data visualization, ETL (Extract,
+                                Transform, Load), data modeling, and interactive dashboard design using Power BI.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="cert-card" data-index="3">
+                    <div class="cert-img-container">
+                        <img src="Sertifikat/fundamental-excel.jpg" alt="Fundamental Formula Excel dalam Analisis Data"
+                            class="cert-img" loading="lazy">
+                        <div class="cert-img-overlay">
+                            <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> <span
+                                    class="lang-id">Perbesar</span><span class="lang-en">Zoom</span></span>
+                        </div>
+                    </div>
+                    <div class="cert-body">
+                        <h3 class="cert-title"><span class="lang-id">Fundamental Formula Excel dalam Analisis
+                                Data</span><span class="lang-en">Fundamental Excel Formulas in Data Analysis</span></h3>
+                        <p class="cert-issuer"><i class="fas fa-building"></i> BPVP Banda Aceh</p>
+                        <p class="cert-date"><i class="fas fa-calendar-alt"></i> <span class="lang-id">Mei
+                                2026</span><span class="lang-en">May 2026</span></p>
+                        <p class="cert-desc">
+                            <span class="lang-id">Menguasai penggunaan formula dasar hingga lanjutan (VLOOKUP,
+                                INDEX-MATCH, IF bertingkat, Pivot Table) untuk analisis data efisien.</span>
+                            <span class="lang-en">Mastering basic to advanced Excel formulas (VLOOKUP, INDEX-MATCH,
+                                nested IF, Pivot Tables) for efficient data analysis.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="cert-card" data-index="4">
+                    <div class="cert-img-container">
+                        <img src="Sertifikat/ai-introductory.jpg" alt="Artificial Intelligence Introductory"
+                            class="cert-img" loading="lazy">
+                        <div class="cert-img-overlay">
+                            <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> <span
+                                    class="lang-id">Perbesar</span><span class="lang-en">Zoom</span></span>
+                        </div>
+                    </div>
+                    <div class="cert-body">
+                        <h3 class="cert-title">Artificial Intelligence Introductory</h3>
+                        <p class="cert-issuer"><i class="fas fa-building"></i> AI Connect (Telkom Indonesia)</p>
+                        <p class="cert-date"><i class="fas fa-calendar-alt"></i> <span class="lang-id">April
+                                2026</span><span class="lang-en">April 2026</span></p>
+                        <p class="cert-desc">
+                            <span class="lang-id">Pengenalan konsep dasar kecerdasan buatan (AI), machine learning,
+                                pemrosesan bahasa alami (NLP), dan penerapan AI dalam pemecahan masalah.</span>
+                            <span class="lang-en">Introduction to basic concepts of Artificial Intelligence (AI),
+                                machine learning, natural language processing (NLP), and AI applications in problem
+                                solving.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="cert-card" data-index="5">
+                    <div class="cert-img-container">
+                        <img src="Sertifikat/Social Media Content Optimizing with AI.jpg"
+                            alt="Social Media Content Optimizing with AI" class="cert-img" loading="lazy">
+                        <div class="cert-img-overlay">
+                            <span class="cert-zoom-btn"><i class="fas fa-search-plus"></i> <span
+                                    class="lang-id">Perbesar</span><span class="lang-en">Zoom</span></span>
+                        </div>
+                    </div>
+                    <div class="cert-body">
+                        <h3 class="cert-title"><span class="lang-id">Optimasi Konten Media Sosial dengan AI</span><span
+                                class="lang-en">Social Media Content Optimizing with AI</span></h3>
+                        <p class="cert-issuer"><i class="fas fa-building"></i> AI Connect (Telkom Indonesia)</p>
+                        <p class="cert-date"><i class="fas fa-calendar-alt"></i> <span class="lang-id">Juni
+                                2026</span><span class="lang-en">June 2026</span></p>
+                        <p class="cert-desc">
+                            <span class="lang-id">Pelatihan mengenai pemanfaatan kecerdasan buatan (AI) untuk merancang,
+                                mengoptimasi, dan meningkatkan efektivitas konten di media sosial.</span>
+                            <span class="lang-en">Training on leveraging artificial intelligence (AI) to design,
+                                optimize, and enhance the effectiveness of social media content.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="section-tag"><i class="fas fa-envelope"></i> <span class="lang-id">Kontak</span><span
+                        class="lang-en">Contact</span></span>
+                <h2 class="section-title"><span class="lang-id">Hubungi Saya</span><span class="lang-en">Contact
+                        Me</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-grid" data-animate>
+                <div class="contact-info">
+                    <h3 class="lang-id">Mari Terhubung!</h3>
+                    <h3 class="lang-en">Let's Connect!</h3>
+                    <p class="lang-id">Tertarik untuk berkolaborasi atau memiliki pertanyaan? Jangan ragu untuk
+                        menghubungi saya melalui kontak di bawah ini.</p>
+                    <p class="lang-en">Interested in collaborating or have any questions? Feel free to reach out to me
+                        through the contact channels below.</p>
+                    <div class="contact-cards">
+                        <a href="mailto:irjazahidi8@gmail.com" class="contact-card-item">
+                            <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <span class="contact-item-label">Email</span>
+                                <span class="contact-item-value">irjazahidi8@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="tel:+6282275576880" class="contact-card-item">
+                            <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <span class="contact-item-label"><span class="lang-id">Telepon</span><span
+                                        class="lang-en">Phone</span></span>
+                                <span class="contact-item-value">+62 822 7557 6880</span>
+                            </div>
+                        </a>
+                        <a href="https://www.linkedin.com/in/irja-zahidi" target="_blank" rel="noopener"
+                            class="contact-card-item">
+                            <div class="contact-item-icon"><i class="fab fa-linkedin-in"></i></div>
+                            <div>
+                                <span class="contact-item-label">LinkedIn</span>
+                                <span class="contact-item-value">irja-zahidi</span>
+                            </div>
+                        </a>
+                        <a href="https://www.instagram.com/irja.zahidi" target="_blank" rel="noopener"
+                            class="contact-card-item">
+                            <div class="contact-item-icon"><i class="fab fa-instagram"></i></div>
+                            <div>
+                                <span class="contact-item-label">Instagram</span>
+                                <span class="contact-item-value">@irja.zahidi</span>
+                            </div>
+                        </a>
+                        <div class="contact-card-item">
+                            <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <span class="contact-item-label"><span class="lang-id">Lokasi</span><span
+                                        class="lang-en">Location</span></span>
+                                <span class="contact-item-value">Banda Aceh, NAD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>IZ<span class="logo-bracket">/&gt;</span>
+                </div>
+                <p class="footer-text">
+                    <span class="lang-id">Didesain & Dikembangkan dengan <span class="heart">❤️</span> oleh Irja
+                        Zahidi</span>
+                    <span class="lang-en">Designed & Developed with <span class="heart">❤️</span> by Irja Zahidi</span>
+                </p>
+                <div class="footer-socials">
+                    <a href="https://www.linkedin.com/in/irja-zahidi" target="_blank" rel="noopener"
+                        aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/irja.zahidi" target="_blank" rel="noopener"
+                        aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:irjazahidi8@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p class="footer-copyright">&copy; 2026 Irja Zahidi. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Lightbox Modal for Certificates -->
+    <div id="certLightbox" class="lightbox" aria-hidden="true" role="dialog">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Tutup Galeri">&times;</button>
+        <button class="lightbox-prev" id="lightboxPrev" aria-label="Sertifikat Sebelumnya"><i
+                class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-next" id="lightboxNext" aria-label="Sertifikat Selanjutnya"><i
+                class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-content-wrapper">
+            <img class="lightbox-content" id="lightboxImg" src="" alt="Detail Sertifikat">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
