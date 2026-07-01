@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safira Mustaqillah - IT Support & Educator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6', // Electric Blue
+                        secondary: '#06b6d4', // Cyan
+                        accent: '#8b5cf6', // Violet
+                        dark: '#030712', // Deep Space Navy (Slate-950)
+                        light: '#0a1128', // Glass Card background basis
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            /* Default: Dark Theme */
+            --bg-body: #030712;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --card-bg: rgba(10, 17, 40, 0.6);
+            --card-bg-fallback: #0a1128;
+            --card-border: rgba(59, 130, 246, 0.15);
+            --nav-bg: rgba(3, 7, 18, 0.75);
+            --nav-bg-scrolled: rgba(3, 7, 18, 0.95);
+            --text-nav: #cbd5e1;
+            --border-nav: rgba(59, 130, 246, 0.1);
+            --card-shadow: 0 4px 30px rgba(0, 0, 0, 0.25);
+            --input-bg: #020617;
+            --input-border: rgba(59, 130, 246, 0.2);
+            --glow-opacity: 0.15;
+            --timeline-dot-bg: #3b82f6;
+            --timeline-dot-border: #030712;
+            --text-muted: #64748b;
+        }
+
+        :root.light {
+            /* Light Theme Switch */
+            --bg-body: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --card-bg-fallback: #ffffff;
+            --card-border: rgba(59, 130, 246, 0.1);
+            --nav-bg: rgba(248, 250, 252, 0.8);
+            --nav-bg-scrolled: rgba(248, 250, 252, 0.95);
+            --text-nav: #334155;
+            --border-nav: rgba(59, 130, 246, 0.08);
+            --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            --input-bg: #ffffff;
+            --input-border: rgba(59, 130, 246, 0.15);
+            --glow-opacity: 0.03;
+            --timeline-dot-bg: #2563eb;
+            --timeline-dot-border: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--bg-body) !important;
+            color: var(--text-primary) !important;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-body);
+            transition: background 0.3s ease;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+            border: 2px solid var(--bg-body);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+
+        /* Custom animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism effects */
+        .glass-nav {
+            background: var(--nav-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-nav);
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-nav.scrolled {
+            background: var(--nav-bg-scrolled);
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Ambient glowing circles */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: var(--glow-opacity) !important;
+            mix-blend-mode: screen;
+            pointer-events: none;
+            animation: pulse-slow 10s infinite alternate;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes pulse-slow {
+            0% {
+                transform: scale(1) translate(0px, 0px);
+            }
+
+            100% {
+                transform: scale(1.15) translate(15px, -15px);
+            }
+        }
+
+        /* Timeline styling */
+        .timeline-dot {
+            position: absolute;
+            left: -8px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--timeline-dot-bg);
+            border: 4px solid var(--timeline-dot-border);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .border-gradient {
+            border: 1px solid transparent;
+            background: linear-gradient(var(--card-bg-fallback), var(--card-bg-fallback)) padding-box,
+                linear-gradient(135deg, #3b82f6, #06b6d4, #8b5cf6) border-box;
+        }
+
+        /* Light Mode Specific Overrides */
+        .light .quiz-step button {
+            background-color: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+            color: #334155 !important;
+        }
+
+        .light .quiz-step button:hover {
+            border-color: #3b82f6 !important;
+            color: #2563eb !important;
+        }
+
+        .light input,
+        .light textarea {
+            background-color: #ffffff !important;
+            border-color: #e2e8f0 !important;
+            color: #0f172a !important;
+        }
+
+        .light input::placeholder,
+        .light textarea::placeholder {
+            color: #94a3b8 !important;
+        }
+
+        .light .bg-slate-950\/50 {
+            background-color: rgba(255, 255, 255, 0.7) !important;
+        }
+
+        /* Light Mode Typography & Color Hierarchy */
+        .light h1,
+        .light h2,
+        .light h3,
+        .light h4,
+        .light h5,
+        .light h6,
+        .light .text-slate-100.font-medium,
+        .light .text-slate-100.hover\:text-blue-400 {
+            color: #0f172a !important;
+        }
+
+        .light .text-slate-100 {
+            color: #1e293b !important;
+        }
+
+        .light .text-slate-200,
+        .light .text-slate-300,
+        .light .text-slate-350 {
+            color: #334155 !important;
+        }
+
+        .light .text-slate-400,
+        .light .text-slate-500,
+        .light .text-slate-600 {
+            color: #64748b !important;
+        }
+
+        .light .text-primary {
+            color: #2563eb !important;
+        }
+
+        .light .text-secondary {
+            color: #0891b2 !important;
+        }
+
+        .light ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+        }
+
+        .light ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Light Mode Link & Navigation Overrides */
+        .light .hover\:text-white:hover {
+            color: #2563eb !important;
+        }
+
+        .light #mobile-menu {
+            background-color: rgba(248, 250, 252, 0.95) !important;
+        }
+
+        .light #mobile-menu a {
+            color: #334155 !important;
+        }
+
+        .light #mobile-menu a:hover {
+            color: #2563eb !important;
+            background-color: rgba(59, 130, 246, 0.08) !important;
+        }
+
+        /* Light Mode Button Overrides */
+        .light .bg-slate-900\/60 {
+            background-color: rgba(241, 245, 249, 0.8) !important;
+            border-color: rgba(59, 130, 246, 0.2) !important;
+            color: #334155 !important;
+        }
+
+        .light .bg-slate-900\/60:hover {
+            background-color: rgba(226, 232, 240, 0.9) !important;
+            color: #0f172a !important;
+        }
+
+        .light .skill-cat-btn:not(.bg-blue-500) {
+            background-color: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+            color: #475569 !important;
+        }
+
+        .light .skill-cat-btn:not(.bg-blue-500):hover {
+            background-color: #e2e8f0 !important;
+            color: #0f172a !important;
+        }
+
+        .light .fixed.bottom-6.right-6 button,
+        .light .fixed.bottom-6.right-6 a {
+            background-color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .light footer {
+            background-color: #f1f5f9 !important;
+            border-top-color: #e2e8f0 !important;
+        }
+
+        /* Light Mode Containers & Card Overrides */
+        .light #col-skills-edu,
+        .light #col-skills-it {
+            background: rgba(255, 255, 255, 0.65) !important;
+            border-color: rgba(59, 130, 246, 0.15) !important;
+        }
+
+        .light .bg-slate-950\/40,
+        .light .skill-item {
+            background-color: rgba(255, 255, 255, 0.5) !important;
+            border-color: rgba(59, 130, 246, 0.1) !important;
+        }
+
+        .light .skill-item:hover {
+            border-color: rgba(59, 130, 246, 0.3) !important;
+            background-color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        .light .bg-\[\#0a1128\]\/95 {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            border-color: rgba(59, 130, 246, 0.15) !important;
+        }
+
+        .light .bg-gradient-to-b.from-dark.to-\[\#070b1e\] {
+            background-image: linear-gradient(to bottom, #f8fafc, #f1f5f9) !important;
+        }
+
+        .light .bg-gradient-to-b.from-\[\#070b1e\].to-dark {
+            background-image: linear-gradient(to bottom, #f1f5f9, #f8fafc) !important;
+        }
+
+        /* Light Mode High-Contrast Colors */
+        .light .text-blue-400,
+        .light .hover\:text-blue-400:hover {
+            color: #2563eb !important;
+        }
+
+        .light .text-cyan-400 {
+            color: #0891b2 !important;
+        }
+
+        .light .text-purple-400 {
+            color: #7c3aed !important;
+        }
+
+        .light .text-emerald-400 {
+            color: #059669 !important;
+        }
+
+        .light .text-yellow-500 {
+            color: #d97706 !important;
+        }
+
+        .light .fa-linux {
+            color: #0f172a !important;
+        }
+
+        .light #match-percentage {
+            background: linear-gradient(to right, #2563eb, #0891b2) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        .light .w-full.bg-slate-950 {
+            background-color: #e2e8f0 !important;
+        }
+
+        .light .border-blue-900\/40 {
+            border-color: #cbd5e1 !important;
+        }
+
+        /* Light Mode Badge Overrides */
+        .light .text-cyan-300 {
+            color: #0891b2 !important;
+        }
+
+        .light .bg-cyan-950\/60 {
+            background-color: #ecfeff !important;
+        }
+
+        .light .border-cyan-800\/30 {
+            border-color: #cffafe !important;
+        }
+
+        .light .text-blue-300 {
+            color: #2563eb !important;
+        }
+
+        .light .bg-blue-950\/60 {
+            background-color: #eff6ff !important;
+        }
+
+        .light .border-blue-900\/30 {
+            border-color: #dbeafe !important;
+        }
+
+        .light .text-purple-300 {
+            color: #7c3aed !important;
+        }
+
+        .light .bg-purple-950\/60 {
+            background-color: #f5f3ff !important;
+        }
+
+        .light .border-purple-900\/30 {
+            border-color: #ede9fe !important;
+        }
+
+        .light .text-emerald-300 {
+            color: #059669 !important;
+        }
+
+        .light .bg-emerald-950\/60 {
+            background-color: #ecfdf5 !important;
+        }
+
+        .light .border-emerald-900\/30 {
+            border-color: #d1fae5 !important;
+        }
+
+        .light #toast {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .light #toast span {
+            color: #0f172a !important;
+        }
+
+        /* Print Mode Override */
+        @media print {
+
+            .no-print,
+            nav,
+            #toast,
+            .floating-actions,
+            button,
+            #quiz-container,
+            #edit-mode-btn {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+                color: #0f172a !important;
+            }
+
+            .glass-card,
+            .border-gradient,
+            .bg-slate-900\/40,
+            .bg-blue-50,
+            .bg-white {
+                background: white !important;
+                color: #0f172a !important;
+                border: 1px solid #cbd5e1 !important;
+                box-shadow: none !important;
+                backdrop-filter: none !important;
+                transform: none !important;
+            }
+
+            .text-gradient {
+                background: none !important;
+                -webkit-text-fill-color: initial !important;
+                color: #1d4ed8 !important;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4 {
+                color: #0f172a !important;
+            }
+
+            p,
+            span,
+            li,
+            a {
+                color: #334155 !important;
+            }
+
+            .timeline-dot {
+                border-color: white !important;
+                background-color: #2563eb !important;
+            }
+
+            .border-l-2 {
+                border-color: #cbd5e1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-dark text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-blue-500/20 selection:text-blue-200">
+
+    <!-- Glowing background lights -->
+    <div class="glow-orb w-[400px] h-[400px] bg-blue-600 top-20 right-[-100px] z-0"></div>
+    <div class="glow-orb w-[500px] h-[500px] bg-purple-800 top-[600px] left-[-200px] z-0" style="animation-delay: 2s;">
+    </div>
+    <div class="glow-orb w-[400px] h-[400px] bg-cyan-600 bottom-40 right-[-50px] z-0" style="animation-delay: 4s;">
+    </div>
+
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home"
+                        class="text-2xl font-bold text-slate-100 dark:text-white tracking-tighter hover:scale-105 transition duration-300">
+                        SM<span class="text-primary font-black">.</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-5 lg:space-x-8">
+                    <a href="#home" class="text-slate-350 hover:text-white transition font-medium">Beranda</a>
+                    <a href="#about" class="text-slate-350 hover:text-white transition font-medium">Tentang</a>
+                    <a href="#education" class="text-slate-350 hover:text-white transition font-medium">Pendidikan</a>
+                    <a href="#certifications"
+                        class="text-slate-350 hover:text-white transition font-medium">Sertifikasi</a>
+                    <a href="#experience" class="text-slate-350 hover:text-white transition font-medium">Pengalaman</a>
+                    <a href="#skills" class="text-slate-350 hover:text-white transition font-medium">Keahlian</a>
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()"
+                        class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-blue-900/20 text-slate-600 dark:text-slate-300 flex items-center justify-center hover:scale-105 transition-all duration-300 focus:outline-none"
+                        title="Ubah Tema">
+                        <i class="fas fa-sun theme-toggle-icon"></i>
+                    </button>
+                    <a href="#contact"
+                        class="px-5 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-full hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 transition-all duration-300 font-medium">Kontak</a>
+                </div>
+
+                <!-- Mobile menu button & Edit button -->
+                <div class="md:hidden flex items-center gap-3">
+                    <!-- Mobile Theme Toggle -->
+                    <button onclick="toggleTheme()"
+                        class="w-9 h-9 rounded-full bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-blue-900/20 text-slate-600 dark:text-slate-300 flex items-center justify-center focus:outline-none"
+                        title="Ubah Tema">
+                        <i class="fas fa-sun theme-toggle-icon text-sm"></i>
+                    </button>
+                    <button id="mobile-menu-button" class="text-slate-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#050918]/95 backdrop-blur-lg border-t border-blue-900/20">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home"
+                    class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-blue-950/40 rounded-md">Beranda</a>
+                <a href="#about"
+                    class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-blue-950/40 rounded-md">Tentang</a>
+                <a href="#education"
+                    class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-blue-950/40 rounded-md">Pendidikan</a>
+                <a href="#certifications"
+                    class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-blue-950/40 rounded-md">Sertifikasi</a>
+                <a href="#experience"
+                    class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-blue-950/40 rounded-md">Pengalaman</a>
+                <a href="#skills"
+                    class="block px-3 py-2 text-base font-medium text-slate-300 hover:text-white hover:bg-blue-950/40 rounded-md">Keahlian</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-primary font-bold">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home"
+        class="pt-32 pb-20 md:pt-40 md:pb-28 px-4 flex items-center min-h-screen relative overflow-hidden z-10">
+
+        <div class="max-w-7xl mx-auto w-full relative z-10 flex flex-col-reverse md:flex-row items-center gap-12">
+
+            <div class="md:w-3/5 text-center md:text-left fade-in-up">
+                <div
+                    class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/60 text-blue-300 text-sm font-semibold mb-6 border border-blue-800/40">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Tersedia untuk peluang baru
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 text-white">
+                    Halo, Saya <br />
+                    <span class="text-gradient font-extrabold editable-text" data-key="hero-name">Safira
+                        Mustaqillah</span>
+                </h1>
+                <h2 class="text-xl md:text-2xl text-slate-300 font-semibold mb-6 editable-text" data-key="hero-title">
+                    IT Support & Tenaga Pendidik Profesional
+                </h2>
+                <p class="text-slate-400 mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed text-base md:text-lg editable-text"
+                    data-key="hero-desc">
+                    Lulusan Pendidikan Teknologi Informasi (2025). Menggabungkan keahlian teknis IT dengan kemampuan
+                    edukasi untuk memberikan solusi dan pembelajaran yang efektif pada instansi digital.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="CV SAFIRA MUSTAQILLAH TERBARU JUNI 2026.pdf"
+                        download="CV SAFIRA MUSTAQILLAH TERBARU JUNI 2026.pdf"
+                        class="px-8 py-3.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white rounded-full font-bold hover:shadow-lg hover:shadow-blue-500/25 hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
+                        <span>Unduh CV</span>
+                        <i class="fas fa-download"></i>
+                    </a>
+                    <a href="#contact"
+                        class="px-8 py-3.5 bg-slate-900/60 text-slate-300 border border-blue-900/30 rounded-full font-bold hover:bg-slate-800/60 hover:text-white hover:-translate-y-1 transition-all duration-300">
+                        Hubungi Saya
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Image Area -->
+            <div class="md:w-2/5 flex justify-center fade-in-up">
+                <div class="relative">
+                    <!-- Decor ring -->
+                    <div
+                        class="absolute inset-0 rounded-full border-4 border-dashed border-blue-500/20 animate-[spin_30s_linear_infinite] pointer-events-none">
+                    </div>
+
+                    <div
+                        class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-8 border-slate-900 shadow-2xl shadow-blue-500/10 relative z-10 bg-slate-900 flex items-center justify-center">
+                        <img src="safira.jpeg" alt="Safira Mustaqillah" class="w-full h-full object-cover">
+                    </div>
+
+                    <!-- Floating badge -->
+                    <div class="absolute -bottom-4 -left-4 bg-[#0a1128]/95 border border-blue-900/30 backdrop-blur-md p-3.5 rounded-2xl shadow-xl flex items-center gap-3 z-20 animate-bounce"
+                        style="animation-duration: 4s;">
+                        <div class="bg-blue-500/10 p-2 rounded-lg text-blue-400 border border-blue-500/20">
+                            <i class="fas fa-graduation-cap text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Lulusan</p>
+                            <p class="text-sm font-bold text-slate-100">2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gradient-to-b from-dark to-[#070b1e] border-b border-blue-900/10 z-10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Tentang Saya</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                <div class="space-y-6 fade-in-up">
+                    <p class="text-slate-300 leading-relaxed text-lg text-justify editable-text" data-key="about-para1">
+                        Saya adalah <strong>Fresh graduate Pendidikan Teknologi Informasi (2025)</strong> dari UIN
+                        Ar-Raniry Banda Aceh. Saya memiliki pencapaian dalam penyelesaian proyek teknologi pendidikan
+                        dan dukungan teknis pada lingkungan sekolah.
+                    </p>
+                    <p class="text-slate-300 leading-relaxed text-lg text-justify editable-text" data-key="about-para2">
+                        Saya memiliki kualitas kerja yang disiplin, teliti, dan mampu cepat beradaptasi dalam menangani
+                        berbagai kebutuhan operasional IT.
+                    </p>
+                    <p class="text-slate-300 leading-relaxed text-lg text-justify font-medium editable-text"
+                        data-key="about-para3">
+                        Ambisi saya adalah terus mengembangkan kompetensi di bidang layanan IT dan administrasi sistem
+                        untuk memberikan dampak positif pada instansi tempat saya bernaung.
+                    </p>
+
+                    <!-- Interactive Compatibility Quiz Widget -->
+                    <div class="mt-8 glass-card rounded-2xl p-6 relative overflow-hidden border-gradient">
+                        <div class="absolute -right-6 -top-6 text-blue-500/10 opacity-30">
+                            <i class="fas fa-puzzle-piece text-8xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-3 relative z-10 flex items-center gap-2">
+                            <i class="fas fa-heart-pulse text-secondary animate-pulse"></i> Tes Kecocokan Rekrutmen
+                        </h3>
+                        <p class="text-xs text-slate-400 mb-4 relative z-10">
+                            Temukan seberapa cocok Safira dengan posisi yang Anda butuhkan melalui 3 pertanyaan cepat
+                            ini!
+                        </p>
+
+                        <!-- Quiz Steps -->
+                        <div id="quiz-container" class="relative z-10 min-h-[160px] flex flex-col justify-between">
+                            <!-- Step 1 -->
+                            <div id="quiz-step-1" class="quiz-step space-y-3">
+                                <p class="text-sm font-semibold text-slate-200">1. Posisi apa yang sedang Anda cari?</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="answerQuiz(1, 'it-support')"
+                                        class="w-full text-left p-2.5 rounded-xl bg-slate-950 border border-slate-900 hover:border-blue-500 text-slate-350 hover:text-white transition">
+                                        👨‍💻 IT Support / Helpdesk
+                                    </button>
+                                    <button onclick="answerQuiz(1, 'educator')"
+                                        class="w-full text-left p-2.5 rounded-xl bg-slate-950 border border-slate-900 hover:border-blue-500 text-slate-350 hover:text-white transition">
+                                        👩‍🏫 Tenaga Pendidik / TIK
+                                    </button>
+                                    <button onclick="answerQuiz(1, 'admin')"
+                                        class="w-full text-left p-2.5 rounded-xl bg-slate-950 border border-slate-900 hover:border-blue-500 text-slate-350 hover:text-white transition">
+                                        📊 Administrasi / Data Entry
+                                    </button>
+                                    <button onclick="answerQuiz(1, 'other')"
+                                        class="w-full text-left p-2.5 rounded-xl bg-slate-950 border border-slate-900 hover:border-blue-500 text-slate-350 hover:text-white transition">
+                                        💼 Posisi Lainnya
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div id="quiz-step-2" class="quiz-step hidden space-y-3">
+                                <p class="text-sm font-semibold text-slate-200">2. Apa kriteria terpenting bagi Anda?
+                                </p>
+                                <div class="grid grid-cols-1 gap-2 text-xs">
+                                    <button onclick="answerQuiz(2, 'discipline')"
+                                        class="w-full text-left p-2.5 rounded-xl bg-slate-950 border border-slate-900 hover:border-blue-500 text-slate-350 hover:text-white transition">
+                                        🎯 Disiplin Tinggi & Ketelitian Kerja
+                                    </button>
+                                    <button onclick="answerQuiz(2, 'adaptable')"
+                                        class="w-full text-left p-2.5 rounded-xl bg-slate-950 border border-slate-900 hover:border-blue-500 text-slate-350 hover:text-white transition">
+                                        ⚡ Cepat Belajar & Mudah Beradaptasi
+                                    </button>
+                                    <button onclick="answerQuiz(2, 'dual-skill')"
+                                        class="w-full text-left p-2.5 rounded-xl bg-slate-950 border border-slate-900 hover:border-blue-500 text-slate-350 hover:text-white transition">
+                                        🛠 Kombinasi Teknis IT & Komunikasi Edukatif
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div id="quiz-step-3" class="quiz-step hidden space-y-3">
+                                <p class="text-sm font-semibold text-slate-200">3. Bagaimana metode kerja instansi Anda?
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                    <button onclick="answerQuiz(3, 'wfo')"
+                                        class="w-full text-left p-2.5 rounded-xl bg-slate-950 border border-slate-900 hover:border-blue-500 text-slate-350 hover:text-white transition">
+                                        🏢 Bekerja di Kantor (WFO)
+                                    </button>
+                                    <button onclick="answerQuiz(3, 'hybrid')"
+                                        class="w-full text-left p-2.5 rounded-xl bg-slate-950 border border-slate-900 hover:border-blue-500 text-slate-350 hover:text-white transition">
+                                        🏡 Kerja Fleksibel (Hybrid)
+                                    </button>
+                                    <button onclick="answerQuiz(3, 'wfh')"
+                                        class="w-full text-left p-2.5 rounded-xl bg-slate-950 border border-slate-900 hover:border-blue-500 text-slate-350 hover:text-white transition">
+                                        💻 Remote (WFA)
+                                    </button>
+                                    <button onclick="answerQuiz(3, 'field')"
+                                        class="w-full text-left p-2.5 rounded-xl bg-slate-950 border border-slate-900 hover:border-blue-500 text-slate-350 hover:text-white transition">
+                                        🚦 Sekolah / Lembaga Pengajaran
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Result Screen -->
+                            <div id="quiz-result" class="quiz-step hidden text-center py-2 space-y-3">
+                                <div
+                                    class="inline-flex items-center justify-center p-2.5 bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">
+                                    <i class="fas fa-chart-line text-xl animate-pulse"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-slate-400 uppercase tracking-widest">Persentase Kecocokan
+                                    </p>
+                                    <p class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400"
+                                        id="match-percentage">0%</p>
+                                </div>
+                                <p class="text-xs text-slate-300 px-2 leading-relaxed" id="match-analysis">
+                                    Safira sangat cocok dengan kriteria Anda!
+                                </p>
+                                <div class="flex gap-2 justify-center pt-2">
+                                    <button onclick="resetQuiz()"
+                                        class="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 border border-blue-900/30 text-white rounded-full text-xs font-semibold transition">
+                                        Coba Lagi
+                                    </button>
+                                    <a href="#contact"
+                                        class="px-4 py-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full text-xs font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition">
+                                        Hubungi Safira
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="space-y-8 fade-in-up">
+                    <div class="glass-card rounded-2xl p-6">
+                        <h3
+                            class="text-xl font-bold text-white mb-6 flex items-center gap-2 border-b border-blue-900/30 pb-4">
+                            <i class="fas fa-language text-emerald-400"></i> Bahasa
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium text-slate-300">Bahasa Indonesia</span>
+                                    <span class="text-sm text-primary font-semibold">Mahir</span>
+                                </div>
+                                <div class="w-full bg-slate-950 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full"
+                                        style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium text-slate-300">Bahasa Inggris</span>
+                                    <span class="text-sm text-primary font-semibold">Mahir</span>
+                                </div>
+                                <div class="w-full bg-slate-950 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full"
+                                        style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education"
+        class="py-20 bg-gradient-to-b from-[#070b1e] to-dark z-10 relative border-b border-blue-900/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Pendidikan</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                <!-- Left Column (Education Card) -->
+                <div class="space-y-8 fade-in-up">
+                    <div class="glass-card rounded-2xl p-6 relative overflow-hidden">
+                        <div class="absolute -right-6 -top-6 text-blue-500/10 opacity-30">
+                            <i class="fas fa-university text-8xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-4 relative z-10 flex items-center gap-2">
+                            <i class="fas fa-user-graduate text-primary"></i> Pendidikan
+                        </h3>
+                        <div class="relative z-10">
+                            <h4 class="font-bold text-lg text-slate-200 editable-text" data-key="edu-major">S1
+                                Pendidikan Teknologi Informasi</h4>
+                            <p class="text-primary font-semibold editable-text" data-key="edu-uni">UIN Ar-Raniry, Banda
+                                Aceh</p>
+                            <p class="text-sm text-slate-400 mt-1"><i class="far fa-calendar-alt mr-1"></i> Lulus Tahun
+                                2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (Riwayat Organisasi Card) -->
+                <div class="space-y-8 fade-in-up">
+                    <div class="glass-card rounded-2xl p-6 relative overflow-hidden">
+                        <div class="absolute -right-6 -top-6 text-blue-500/10 opacity-30">
+                            <i class="fas fa-sitemap text-8xl"></i>
+                        </div>
+                        <h3
+                            class="text-xl font-bold text-white mb-6 flex items-center gap-2 border-b border-blue-900/30 pb-4">
+                            <i class="fas fa-users text-primary"></i> Riwayat Organisasi
+                        </h3>
+                        <ul class="space-y-5 relative z-10">
+                            <li class="flex items-start gap-4">
+                                <div
+                                    class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 shrink-0 mt-0.5">
+                                    <i class="fas fa-laptop-code text-lg"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="font-semibold text-slate-200 leading-tight">Ketua Departemen Ristek</p>
+                                    <p class="text-xs text-slate-400">DEMA FTK (Dewan Eksekutif Mahasiswa Fakultas
+                                        Tarbiyah dan Keguruan)</p>
+                                    <span
+                                        class="text-[10px] font-semibold text-purple-300 bg-purple-950/60 px-2 py-0.5 rounded inline-block border border-purple-900/30">2023</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div
+                                    class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
+                                    <i class="fas fa-network-wired text-lg"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="font-semibold text-slate-200 leading-tight">Sekretaris Divisi IPTEK</p>
+                                    <p class="text-xs text-slate-400">PERMIKOMNAS RI Wilayah 1 Aceh-Sumut</p>
+                                    <span
+                                        class="text-[10px] font-semibold text-blue-300 bg-blue-950/60 px-2 py-0.5 rounded inline-block border border-blue-900/30">2022</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div
+                                    class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0 mt-0.5">
+                                    <i class="fas fa-comments text-lg"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="font-semibold text-slate-200 leading-tight">Sekretaris Departemen Hual</p>
+                                    <p class="text-xs text-slate-400">DEMA FTK</p>
+                                    <span
+                                        class="text-[10px] font-semibold text-cyan-300 bg-cyan-950/60 px-2 py-0.5 rounded inline-block border border-cyan-900/30">2022</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div
+                                    class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
+                                    <i class="fas fa-users-cog text-lg"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="font-semibold text-slate-200 leading-tight">Sekretaris Bidang
+                                        Kemahasiswaan</p>
+                                    <p class="text-xs text-slate-400">HIMAPTI (Himpunan Mahasiswa Pendidikan Teknologi
+                                        Informasi)</p>
+                                    <span
+                                        class="text-[10px] font-semibold text-emerald-300 bg-emerald-950/60 px-2 py-0.5 rounded inline-block border border-emerald-900/30">2021</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Scientific Publications Card (Full-width below) -->
+                <div class="md:col-span-2 w-full fade-in-up mt-4">
+                    <div class="glass-card rounded-3xl p-8 border-gradient relative overflow-hidden">
+                        <div class="absolute -right-10 -top-10 text-blue-500/5 opacity-20 pointer-events-none">
+                            <i class="fas fa-book-open text-9xl"></i>
+                        </div>
+
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
+                            <div class="space-y-2">
+                                <span
+                                    class="inline-flex items-center gap-1.5 px-3 py-1 bg-cyan-950/60 border border-cyan-800/30 text-cyan-300 rounded-full text-xs font-semibold uppercase tracking-wider">
+                                    <i class="fas fa-file-alt"></i> Jurnal Ilmiah / Penelitian
+                                </span>
+                                <h3 class="text-xl md:text-2xl font-bold text-white editable-text leading-snug"
+                                    data-key="pub-title">
+                                    Analisis ISO 27001: 2022 Terhadap Ketahanan Infrastruktur ICT Perguruan Tinggi Dari
+                                    Serangan Ransomware (Studi Kasus ICT UIN Ar-Raniry)
+                                </h3>
+                                <p class="text-sm text-slate-400">
+                                    Penulis: <span class="text-slate-200 font-semibold">Safira Mustaqillah</span>, Aulia
+                                    Syarif Aziz
+                                </p>
+                            </div>
+                            <div class="text-left md:text-right shrink-0">
+                                <span
+                                    class="text-xs font-semibold text-blue-300 bg-blue-950/60 px-3 py-1 rounded-full border border-blue-900/30">2025</span>
+                                <p class="text-xs text-slate-400 mt-2 font-medium">Innovative Journal, Vol. 5 No. 4</p>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-blue-900/20 pt-6 space-y-4">
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-350 uppercase tracking-widest mb-2">Abstrak &
+                                    Fokus Penelitian</h4>
+                                <p class="text-slate-300 text-justify text-sm leading-relaxed editable-text"
+                                    data-key="pub-abstract">
+                                    Penelitian ini mengevaluasi kesiapan dan ketahanan infrastruktur teknologi informasi
+                                    perguruan tinggi (studi kasus ICT UIN Ar-Raniry) terhadap ancaman serangan
+                                    ransomware. Mengacu pada standar global <strong>ISO 27001:2022 (Kontrol
+                                        A.5.34)</strong>, penelitian memfokuskan pada efektivitas kebijakan backup,
+                                    dokumentasi formal prosedur pemulihan data (recovery), serta pengelolaan risiko
+                                    keamanan informasi untuk menjaga kelangsungan operasional perguruan tinggi.
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                                <div class="bg-slate-950/50 p-4 rounded-xl border border-blue-900/20">
+                                    <h5 class="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-1.5">Temuan
+                                        Utama</h5>
+                                    <p class="text-xs text-slate-400 leading-relaxed editable-text"
+                                        data-key="pub-findings">
+                                        Tim ICT telah melakukan rutinitas backup dengan baik, namun terdapat ruang
+                                        peningkatan pada dokumentasi formal Standar Operasional Prosedur (SOP) backup
+                                        serta pengujian pemulihan data (restore testing) secara berkala untuk menghadapi
+                                        ancaman enkripsi ransomware.
+                                    </p>
+                                </div>
+                                <div class="bg-slate-950/50 p-4 rounded-xl border border-blue-900/20">
+                                    <h5 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-1.5">
+                                        Rekomendasi Kontrol</h5>
+                                    <p class="text-xs text-slate-400 leading-relaxed editable-text" data-key="pub-recs">
+                                        Penyusunan regulasi tertulis SOP backup, uji coba pemulihan berkala (restore
+                                        test), dan pengerasan keamanan siber untuk melindungi data cadangan secara
+                                        menyeluruh dari potensi insiden siber ransomware.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="pt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-blue-900/10 text-xs">
+                                <span class="text-slate-400">Penerbit: Innovative: Journal Of Social Science
+                                    Research</span>
+                                <a href="https://j-innovative.org/index.php/Innovative/article/view/20950"
+                                    target="_blank"
+                                    class="flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-blue-400 hover:text-white rounded-lg border border-blue-900/30 transition duration-300 font-semibold no-print">
+                                    <i class="fas fa-external-link-alt"></i> Lihat Jurnal Asli
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications"
+        class="py-20 bg-gradient-to-b from-dark to-[#070b1e] z-10 relative border-b border-blue-900/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Pelatihan & Sertifikasi</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 fade-in-up">
+                <!-- Cert 1 -->
+                <div
+                    class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between min-h-[220px]">
+                    <div class="absolute -right-6 -top-6 text-purple-500/10 opacity-30">
+                        <i class="fas fa-brain text-7xl"></i>
+                    </div>
+                    <div class="space-y-4 z-10">
+                        <div
+                            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-purple-950/60 text-purple-300 text-xs font-semibold border border-purple-900/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span> 2026
+                        </div>
+                        <h3 class="font-bold text-slate-200 leading-snug editable-text" data-key="cert-1">
+                            AI Introductory Series: Agentic AI Pahami, Rancang, Dan Bangun
+                        </h3>
+                    </div>
+                    <div
+                        class="mt-6 text-xs text-slate-400 flex items-center gap-1.5 border-t border-blue-900/10 pt-3 z-10">
+                        <i class="fas fa-certificate text-purple-400"></i> Kredensial AI & Agen Digital
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div
+                    class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between min-h-[220px]">
+                    <div class="absolute -right-6 -top-6 text-blue-500/10 opacity-30">
+                        <i class="fas fa-chalkboard-teacher text-7xl"></i>
+                    </div>
+                    <div class="space-y-4 z-10">
+                        <div
+                            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-950/60 text-blue-300 text-xs font-semibold border border-blue-900/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span> 2025
+                        </div>
+                        <h3 class="font-bold text-slate-200 leading-snug editable-text" data-key="cert-2">
+                            Pelatihan Nasional Mendesain Rencana Pembelajaran Mendalam dengan integrasi Teknologi AI
+                        </h3>
+                    </div>
+                    <div
+                        class="mt-6 text-xs text-slate-400 flex items-center gap-1.5 border-t border-blue-900/10 pt-3 z-10">
+                        <i class="fas fa-certificate text-blue-400"></i> Metodologi & Teknologi AI
+                    </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div
+                    class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between min-h-[220px]">
+                    <div class="absolute -right-6 -top-6 text-emerald-500/10 opacity-30">
+                        <i class="fas fa-code text-7xl"></i>
+                    </div>
+                    <div class="space-y-4 z-10">
+                        <div
+                            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/60 text-emerald-300 text-xs font-semibold border border-emerald-900/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> 2022
+                        </div>
+                        <h3 class="font-bold text-slate-200 leading-snug editable-text" data-key="cert-3">
+                            WEB Web Developer KNPI ACEH
+                        </h3>
+                    </div>
+                    <div
+                        class="mt-6 text-xs text-slate-400 flex items-center gap-1.5 border-t border-blue-900/10 pt-3 z-10">
+                        <i class="fas fa-certificate text-emerald-400"></i> KNPI Aceh Web Development
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience"
+        class="py-20 bg-gradient-to-b from-[#070b1e] to-dark z-10 relative border-b border-blue-900/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Pengalaman Kerja</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-400">Perjalanan karir saya di bidang IT dan Pendidikan</p>
+            </div>
+
+            <div class="relative border-l-2 border-blue-900/40 ml-3 md:ml-6 space-y-12">
+
+                <!-- Experience 1 -->
+                <div class="relative pl-8 md:pl-10 fade-in-up">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white editable-text" data-key="exp-co-1">TIM IT LP3H
+                                </h3>
+                                <h4 class="text-primary font-medium editable-text" data-key="exp-pos-1">(YSPDI) Robbani
+                                    | Banda Aceh</h4>
+                            </div>
+                            <div
+                                class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-950/60 border border-blue-900/30 text-blue-300 rounded-full text-xs font-semibold whitespace-nowrap self-start md:self-center">
+                                <i class="far fa-calendar-alt"></i> <span class="editable-text"
+                                    data-key="exp-date-1">Mar 2026 - Sekarang</span>
+                            </div>
+                        </div>
+                        <ul class="list-disc list-inside text-slate-350 space-y-2 mt-4 ml-1 text-sm md:text-base editable-text"
+                            data-key="exp-bullets-1">
+                            <li>Memverifikasi data pelaku usaha pada aplikasi SiHalal.</li>
+                            <li>Memastikan kesesuaian data dan dokumen dengan kondisi lapangan.</li>
+                            <li>Memvalidasi kelengkapan serta kebenaran data sertifikasi halal.</li>
+                            <li>Mengirimkan data yang telah valid untuk proses sertifikasi halal lebih lanjut.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="relative pl-8 md:pl-10 fade-in-up">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white editable-text" data-key="exp-co-2">OPERATOR
+                                    DAPODIK SEKOLAH</h3>
+                                <h4 class="text-primary font-medium editable-text" data-key="exp-pos-2">TKs Babul
+                                    Khiarat | Indrapuri, Aceh Besar</h4>
+                            </div>
+                            <div
+                                class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-950/60 border border-blue-900/30 text-blue-300 rounded-full text-xs font-semibold whitespace-nowrap self-start md:self-center">
+                                <i class="far fa-calendar-alt"></i> <span class="editable-text"
+                                    data-key="exp-date-2">Jun 2025 - Sekarang</span>
+                            </div>
+                        </div>
+                        <ul class="list-disc list-inside text-slate-350 space-y-2 mt-4 ml-1 text-sm md:text-base editable-text"
+                            data-key="exp-bullets-2">
+                            <li>Mengelola dan Menginput Data Pokok Pendidikan (Dapodik).</li>
+                            <li>Melakukan Validasi dan Sinkronisasi Data ke Server Pusat.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="relative pl-8 md:pl-10 fade-in-up">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white editable-text" data-key="exp-co-3">Guru
+                                    Informatika</h3>
+                                <h4 class="text-primary font-medium editable-text" data-key="exp-pos-3">SMK N 2 Banda
+                                    Aceh | Aceh</h4>
+                            </div>
+                            <div
+                                class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-950/60 border border-blue-900/30 text-blue-300 rounded-full text-xs font-semibold whitespace-nowrap self-start md:self-center">
+                                <i class="far fa-calendar-alt"></i> <span class="editable-text"
+                                    data-key="exp-date-3">Feb 2025 - Des 2025</span>
+                            </div>
+                        </div>
+                        <ul class="list-disc list-inside text-slate-350 space-y-2 mt-4 ml-1 text-sm md:text-base editable-text"
+                            data-key="exp-bullets-3">
+                            <li>Menyusun RPP, modul ajar, dan perangkat pembelajaran.</li>
+                            <li>Mengajarkan kompetensi dasar seperti algoritma, pemrograman dasar, sistem komputer,
+                                jaringan, dan literasi digital.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="relative pl-8 md:pl-10 fade-in-up">
+                    <div class="timeline-dot"
+                        style="background-color: #4b5563; box-shadow: 0 0 0 2px rgba(75, 85, 99, 0.5);"></div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white editable-text" data-key="exp-co-4">Guru
+                                    Administrasi Server Jaringan</h3>
+                                <h4 class="text-slate-400 font-medium editable-text" data-key="exp-pos-4">SMK N 1 Al
+                                    MUBARKEYA | Ingin Jaya, Aceh Besar</h4>
+                            </div>
+                            <div
+                                class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-950/60 border border-blue-900/30 text-blue-300 rounded-full text-xs font-semibold whitespace-nowrap self-start md:self-center">
+                                <i class="far fa-calendar-alt"></i> <span class="editable-text"
+                                    data-key="exp-date-4">Jun 2023 - Jan 2024</span>
+                            </div>
+                        </div>
+                        <ul class="list-disc list-inside text-slate-350 space-y-2 mt-4 ml-1 text-sm md:text-base editable-text"
+                            data-key="exp-bullets-4">
+                            <li>Mengajarkan konsep dan praktik administrasi server.</li>
+                            <li>Meliputi: Instalasi, konfigurasi, manajemen user, keamanan server, layanan jaringan
+                                (DNS, DHCP, Web Server, File Server).</li>
+                            <li>Pemecahan masalah pada sistem server berbasis Windows maupun Linux.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills"
+        class="py-20 bg-gradient-to-b from-dark to-[#070b1e] z-10 relative border-b border-blue-900/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Keahlian Utama</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-400 max-w-2xl mx-auto">Kombinasi keterampilan teknis IT dan kemampuan pedagogik
+                    untuk mendukung ekosistem pendidikan digital.</p>
+            </div>
+
+            <!-- Search & Filter Controls -->
+            <div class="max-w-md mx-auto mb-12 fade-in-up flex flex-col gap-4">
+                <div class="relative">
+                    <input type="text" id="skill-search" oninput="filterSkills()"
+                        placeholder="Cari keahlian (contoh: Python, Kelas, Canva...)"
+                        class="w-full px-5 py-3 rounded-full bg-slate-950 border border-blue-900/30 text-slate-100 focus:outline-none focus:border-blue-500 transition placeholder-slate-600 text-sm">
+                    <i class="fas fa-search absolute right-5 top-4 text-slate-500"></i>
+                </div>
+                <div class="flex justify-center gap-2">
+                    <button onclick="setSkillCategory('all')" id="cat-btn-all"
+                        class="skill-cat-btn px-4 py-1.5 rounded-full text-xs font-semibold transition bg-blue-500 text-white border border-blue-500/20">Semua</button>
+                    <button onclick="setSkillCategory('it')" id="cat-btn-it"
+                        class="skill-cat-btn px-4 py-1.5 rounded-full text-xs font-semibold transition bg-slate-900/50 text-slate-400 hover:text-white border border-slate-800">IT
+                        & Teknologi</button>
+                    <button onclick="setSkillCategory('edu')" id="cat-btn-edu"
+                        class="skill-cat-btn px-4 py-1.5 rounded-full text-xs font-semibold transition bg-slate-900/50 text-slate-400 hover:text-white border border-slate-800">Pendidikan</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Educational Skills -->
+                <div id="col-skills-edu"
+                    class="bg-gradient-to-br from-slate-900/40 to-blue-950/20 p-8 rounded-3xl border border-blue-900/20 backdrop-blur-md fade-in-up">
+                    <div
+                        class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-primary text-2xl mb-6 border border-blue-500/20">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6">Keahlian Pendidik</h3>
+
+                    <div class="space-y-4">
+                        <div class="skill-item bg-slate-950/40 p-4 rounded-xl border border-blue-900/10 flex gap-4 transition duration-300 hover:border-blue-500/25"
+                            data-category="edu" data-name="manajemen kelas pengelolaan diferensiasi pembelajaran">
+                            <div class="text-cyan-400 mt-1"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-200">Manajemen Kelas</h4>
+                                <p class="text-sm text-slate-400 mt-1">Pengelolaan Kelas dan Diferensiasi Pembelajaran
+                                    untuk berbagai karakteristik siswa.</p>
+                            </div>
+                        </div>
+                        <div class="skill-item bg-slate-950/40 p-4 rounded-xl border border-blue-900/10 flex gap-4 transition duration-300 hover:border-blue-500/25"
+                            data-category="edu" data-name="evaluasi bimbingan hasil belajar konseling dasar">
+                            <div class="text-cyan-400 mt-1"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-200">Evaluasi & Bimbingan</h4>
+                                <p class="text-sm text-slate-400 mt-1">Evaluasi Hasil Belajar serta Bimbingan Konseling
+                                    Dasar.</p>
+                            </div>
+                        </div>
+                        <div class="skill-item bg-slate-950/40 p-4 rounded-xl border border-blue-900/10 flex gap-4 transition duration-300 hover:border-blue-500/25"
+                            data-category="edu"
+                            data-name="desain instruksional pengembangan media ajar interaktif edukasi teknologi">
+                            <div class="text-cyan-400 mt-1"><i class="fas fa-check-circle"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-200">Desain Instruksional</h4>
+                                <p class="text-sm text-slate-400 mt-1">Pengembangan Media Ajar Interaktif dan Desain
+                                    Edukasi berbasis teknologi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Skills -->
+                <div id="col-skills-it"
+                    class="bg-gradient-to-br from-slate-900/40 to-purple-950/20 p-8 rounded-3xl border border-purple-900/20 backdrop-blur-md fade-in-up"
+                    style="transition-delay: 200ms;">
+                    <div
+                        class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 text-2xl mb-6 border border-purple-500/20">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6">Teknologi Informasi</h3>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Tech Skill items -->
+                        <div class="skill-item bg-slate-950/40 p-4 rounded-xl border border-blue-900/10 flex flex-col items-center text-center hover:border-blue-500/25 transition-all duration-300"
+                            data-category="it" data-name="microsoft office word excel powerpoint ppt">
+                            <i class="fab fa-microsoft text-3xl text-blue-500 mb-2"></i>
+                            <span class="font-medium text-slate-350 text-xs md:text-sm">Microsoft Office</span>
+                        </div>
+                        <div class="skill-item bg-slate-950/40 p-4 rounded-xl border border-blue-900/10 flex flex-col items-center text-center hover:border-blue-500/25 transition-all duration-300"
+                            data-category="it" data-name="python programming coding">
+                            <i class="fab fa-python text-3xl text-yellow-500 mb-2"></i>
+                            <span class="font-medium text-slate-350 text-xs md:text-sm">Python</span>
+                        </div>
+                        <div class="skill-item bg-slate-950/40 p-4 rounded-xl border border-blue-900/10 flex flex-col items-center text-center hover:border-blue-500/25 transition-all duration-300"
+                            data-category="it" data-name="html css web development frontend">
+                            <div class="flex gap-1 mb-2">
+                                <i class="fab fa-html5 text-3xl text-orange-500"></i>
+                                <i class="fab fa-css3-alt text-3xl text-blue-400"></i>
+                            </div>
+                            <span class="font-medium text-slate-350 text-xs md:text-sm">HTML / CSS</span>
+                        </div>
+                        <div class="skill-item bg-slate-950/40 p-4 rounded-xl border border-blue-900/10 flex flex-col items-center text-center hover:border-blue-500/25 transition-all duration-300"
+                            data-category="it" data-name="jaringan komputer networking cisco mikrotik router switch">
+                            <i class="fas fa-network-wired text-3xl text-cyan-400 mb-2"></i>
+                            <span class="font-medium text-slate-350 text-xs md:text-sm">Jaringan Komputer</span>
+                        </div>
+                        <div class="skill-item bg-slate-950/40 p-4 rounded-xl border border-blue-900/10 flex flex-col items-center text-center hover:border-blue-500/25 transition-all duration-300"
+                            data-category="it" data-name="windows linux operating system OS admin">
+                            <div class="flex gap-2 mb-2">
+                                <i class="fab fa-windows text-2xl text-blue-400"></i>
+                                <i class="fab fa-linux text-2xl text-white"></i>
+                            </div>
+                            <span class="font-medium text-slate-350 text-xs md:text-sm">Windows / Linux</span>
+                        </div>
+                        <div class="skill-item bg-slate-950/40 p-4 rounded-xl border border-blue-900/10 flex flex-col items-center text-center hover:border-blue-500/25 transition-all duration-300"
+                            data-category="it" data-name="desain canva editing photo banner flyer poster">
+                            <i class="fas fa-paint-brush text-3xl text-purple-400 mb-2"></i>
+                            <span class="font-medium text-slate-350 text-xs md:text-sm">Desain (Canva)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact"
+        class="py-20 bg-gradient-to-b from-[#070b1e] to-dark text-slate-200 relative overflow-hidden z-10 border-b border-blue-900/15">
+        <!-- Decor pattern -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none"
+            style="background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+                <div class="fade-in-up">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 text-white">Mari Terhubung</h2>
+                    <p class="text-slate-400 text-lg mb-10 max-w-md editable-text" data-key="contact-desc">
+                        Saya selalu terbuka untuk mendiskusikan peluang pekerjaan, kolaborasi proyek, atau sekadar
+                        berbagi pengetahuan seputar IT dan pendidikan.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-slate-900 border border-blue-900/30 rounded-full flex items-center justify-center text-xl text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all cursor-pointer"
+                                onclick="copyToClipboard('+6283871795494')">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase tracking-widest">Telepon / WhatsApp</p>
+                                <p class="text-lg font-medium text-slate-100 hover:text-blue-400 cursor-pointer transition"
+                                    onclick="copyToClipboard('+6283871795494')">+62 838 7179 5494</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-slate-900 border border-blue-900/30 rounded-full flex items-center justify-center text-xl text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all cursor-pointer"
+                                onclick="copyToClipboard('safiramustaqillah20@gmail.com')">
+                                <i class="far fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase tracking-widest">Email</p>
+                                <a href="mailto:safiramustaqillah20@gmail.com"
+                                    class="text-lg font-medium text-slate-100 hover:text-blue-400 transition-colors">safiramustaqillah20@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-slate-900 border border-blue-900/30 rounded-full flex items-center justify-center text-xl text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all cursor-pointer"
+                                onclick="copyToClipboard('@sasahsn')">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase tracking-widest">Instagram</p>
+                                <p class="text-lg font-medium text-slate-100 hover:text-blue-400 cursor-pointer transition"
+                                    onclick="copyToClipboard('@sasahsn')">@sasahsn</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 group">
+                            <div
+                                class="w-12 h-12 bg-slate-900 border border-blue-900/30 rounded-full flex items-center justify-center text-xl text-blue-400">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase tracking-widest">Lokasi</p>
+                                <p class="text-lg font-medium text-slate-100">Indrapuri, Aceh Besar, Aceh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message Form (Visual Only / Mailto functionality) -->
+                <div class="glass-card rounded-3xl p-8 md:p-10 border-gradient fade-in-up"
+                    style="transition-delay: 200ms;">
+                    <h3 class="text-2xl font-bold mb-6 text-white">Kirim Pesan Cepat</h3>
+                    <form onsubmit="sendEmail(event)" class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-2" for="name">Nama Anda</label>
+                            <input type="text" id="name" required
+                                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-blue-900/20 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-slate-100 placeholder-slate-600 transition-all text-sm"
+                                placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-2" for="subject">Subjek</label>
+                            <input type="text" id="subject" required
+                                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-blue-900/20 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-slate-100 placeholder-slate-600 transition-all text-sm"
+                                placeholder="Tawaran Pekerjaan">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-2" for="message">Pesan</label>
+                            <textarea id="message" required rows="4"
+                                class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-blue-900/20 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-slate-100 placeholder-slate-600 transition-all resize-none text-sm"
+                                placeholder="Halo Safira..."></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-lg shadow-blue-500/25 flex justify-center items-center gap-2 hover:-translate-y-0.5">
+                            <span>Kirim Pesan via Email</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#02050e] text-slate-500 py-8 border-t border-blue-900/10 text-center relative z-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 Safira Mustaqillah. All Rights Reserved.</p>
+            <p class="text-xs mt-2 text-slate-600">Dibuat sebagai portofolio profesional premium.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Actions -->
+    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-45 no-print">
+        <button onclick="window.print()"
+            class="w-12 h-12 rounded-full bg-slate-900 border border-blue-900/30 text-blue-400 flex items-center justify-center shadow-lg hover:bg-blue-500 hover:text-white hover:scale-110 transition duration-300"
+            title="Cetak CV / Simpan PDF">
+            <i class="fas fa-print"></i>
+        </button>
+        <a href="https://wa.me/6283871795494" target="_blank"
+            class="w-12 h-12 rounded-full bg-[#25d366] text-white flex items-center justify-center shadow-lg hover:scale-110 transition duration-300"
+            title="Hubungi via WhatsApp">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </a>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast"
+        class="fixed bottom-5 right-5 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 border border-blue-900/30 text-white px-6 py-3.5 rounded-xl shadow-2xl z-50 flex items-center gap-3">
+        <i class="fas fa-check-circle text-cyan-400 text-lg"></i>
+        <span id="toast-message" class="text-sm font-semibold text-slate-200">Tersalin ke clipboard!</span>
+    </div>
+
+
+    <script>
+        // --- Fitur Theme Switcher: Dark / Light Mode ---
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('light')) {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateThemeIcon('dark');
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                localStorage.setItem('theme', 'light');
+                updateThemeIcon('light');
+            }
+        }
+
+        function updateThemeIcon(theme) {
+            const icons = document.querySelectorAll('.theme-toggle-icon');
+            icons.forEach(icon => {
+                if (theme === 'light') {
+                    icon.className = 'fas fa-moon theme-toggle-icon';
+                } else {
+                    icon.className = 'fas fa-sun theme-toggle-icon';
+                }
+            });
+        }
+
+        // Initialize theme immediately to prevent layout shifts
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const htmlElement = document.documentElement;
+            if (savedTheme === 'light') {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+            } else {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                updateThemeIcon(savedTheme);
+            });
+        })();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                nav.classList.add('scrolled', 'shadow-lg');
+            } else {
+                nav.classList.remove('scrolled', 'shadow-lg');
+            }
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Run once
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in-up');
+            elements.forEach(el => observer.observe(el));
+        });
+
+        // Copy to clipboard functionality
+        function copyToClipboard(text) {
+            const el = document.createElement('textarea');
+            el.value = text;
+            el.setAttribute('readonly', '');
+            el.style.position = 'absolute';
+            el.style.left = '-9999px';
+            document.body.appendChild(el);
+
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+
+            showToast(`"${text}" disalin ke clipboard!`);
+        }
+
+        // Form Submission to Mailto
+        function sendEmail(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const mailtoLink = `mailto:safiramustaqillah20@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Dari: " + name + "\n\n" + message)}`;
+
+            window.location.href = mailtoLink;
+        }
+
+        // Toast Notification System
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+
+            toastMsg.textContent = message;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // --- Fitur Keren 2: Recruiter Compatibility Quiz ---
+        let quizAnswers = {};
+        function answerQuiz(step, value) {
+            quizAnswers[step] = value;
+            document.getElementById(`quiz-step-${step}`).classList.add('hidden');
+
+            if (step < 3) {
+                document.getElementById(`quiz-step-${step + 1}`).classList.remove('hidden');
+            } else {
+                const resultDiv = document.getElementById('quiz-result');
+                resultDiv.classList.remove('hidden');
+
+                // Calculate match percentage dynamically
+                let percentage = 90;
+                let analysis = '';
+
+                if (quizAnswers[1] === 'it-support') {
+                    percentage += 7;
+                    analysis += 'Safira memiliki kecocokan tinggi karena berpengalaman menangani instalasi OS, Dapodik, dan troubleshooting. ';
+                } else if (quizAnswers[1] === 'educator') {
+                    percentage += 10;
+                    analysis += 'Luar biasa! Latar belakang S1 Pendidikan IT Safira membuatnya sangat ideal sebagai instruktur/pendidik teknologi. ';
+                } else {
+                    percentage += 5;
+                    analysis += 'Akurasi kerja dan pengalaman manajemen data SiHalal/Dapodik Safira sangat menunjang posisi operasional ini. ';
+                }
+
+                if (quizAnswers[2] === 'discipline') {
+                    percentage += 0;
+                    analysis += 'Kualitas ketelitian kerja Safira sangat menjamin penyelesaian tugas secara rapi dan tervalidasi. ';
+                } else if (quizAnswers[2] === 'adaptable') {
+                    percentage += 0;
+                    analysis += 'Safira terbukti cepat beradaptasi dengan sistem administrasi instansi baru dalam hitungan hari. ';
+                }
+
+                percentage = Math.min(percentage, 100);
+
+                let current = 0;
+                const speed = 12;
+                const target = percentage;
+                const percentageText = document.getElementById('match-percentage');
+                const analysisText = document.getElementById('match-analysis');
+
+                analysisText.textContent = analysis;
+
+                const counter = setInterval(() => {
+                    current += 1;
+                    percentageText.textContent = current + '%';
+                    if (current >= target) {
+                        clearInterval(counter);
+                    }
+                }, speed);
+            }
+        }
+
+        function resetQuiz() {
+            quizAnswers = {};
+            document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+            document.getElementById('quiz-step-1').classList.remove('hidden');
+        }
+
+        // --- Fitur Keren 3: Pencarian & Filter Keahlian ---
+        let activeSkillCategory = 'all';
+
+        function setSkillCategory(cat) {
+            activeSkillCategory = cat;
+
+            // Update active button styling
+            document.querySelectorAll('.skill-cat-btn').forEach(btn => {
+                btn.className = "skill-cat-btn px-4 py-1.5 rounded-full text-xs font-semibold transition bg-slate-900/50 text-slate-400 hover:text-white border border-slate-800";
+            });
+            const activeBtn = document.getElementById(`cat-btn-${cat}`);
+            activeBtn.className = "skill-cat-btn px-4 py-1.5 rounded-full text-xs font-semibold transition bg-blue-500 text-white border border-blue-500/20";
+
+            filterSkills();
+        }
+
+        function filterSkills() {
+            const searchVal = document.getElementById('skill-search').value.toLowerCase();
+            const items = document.querySelectorAll('.skill-item');
+
+            const colEdu = document.getElementById('col-skills-edu');
+            const colIt = document.getElementById('col-skills-it');
+
+            // Toggle column visibility based on category
+            if (activeSkillCategory === 'edu') {
+                colEdu.classList.remove('hidden');
+                colIt.classList.add('hidden');
+            } else if (activeSkillCategory === 'it') {
+                colEdu.classList.add('hidden');
+                colIt.classList.remove('hidden');
+            } else {
+                colEdu.classList.remove('hidden');
+                colIt.classList.remove('hidden');
+            }
+
+            // Filter individual items by name
+            items.forEach(item => {
+                const name = item.getAttribute('data-name');
+                const matchesSearch = name.includes(searchVal);
+
+                if (matchesSearch) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
